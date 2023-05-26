@@ -1,7 +1,6 @@
 package com.github.sett4.dataformat.xlsx.impl;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
@@ -38,11 +37,11 @@ public class XlsxWriter {
     }
 
     public void write(int columnIndex, String text) {
-        createCell(columnIndex, CellType.STRING).setCellValue(text);
+        createCell(columnIndex, Cell.CELL_TYPE_STRING).setCellValue(text);
     }
 
     public void write(int columnIndex, boolean state) {
-        createCell(columnIndex, CellType.BOOLEAN).setCellValue(state);
+        createCell(columnIndex, Cell.CELL_TYPE_BOOLEAN).setCellValue(state);
     }
 
     public void endRow() {
@@ -65,26 +64,26 @@ public class XlsxWriter {
     }
 
     public void write(int columnIndex, float v) {
-        createCell(columnIndex, CellType.NUMERIC).setCellValue(v);
+        createCell(columnIndex, Cell.CELL_TYPE_NUMERIC).setCellValue(v);
     }
 
     public void write(int columnIndex, double v) {
-        createCell(columnIndex, CellType.NUMERIC).setCellValue(v);
+        createCell(columnIndex, Cell.CELL_TYPE_NUMERIC).setCellValue(v);
     }
 
     public void write(int columnIndex, int v) {
-        createCell(columnIndex, CellType.NUMERIC).setCellValue(v);
+        createCell(columnIndex, Cell.CELL_TYPE_NUMERIC).setCellValue(v);
     }
 
     public void write(int columnIndex, long v) {
-        createCell(columnIndex, CellType.NUMERIC).setCellValue(v);
+        createCell(columnIndex, Cell.CELL_TYPE_NUMERIC).setCellValue(v);
     }
 
     public Object getOutputTarget() {
         return out;
     }
     
-    private Cell createCell(int columnIndex, CellType type) {
+    private Cell createCell(int columnIndex, int type) {
     	Cell cell = getRow().createCell(columnIndex, type);
     	if (columnIndex == _nextColumnToWrite) {
     		++_nextColumnToWrite;
