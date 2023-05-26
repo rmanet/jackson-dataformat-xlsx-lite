@@ -139,14 +139,11 @@
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.6.6</version>
                 <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <id>does-not-exist</id>
-                        <!--this is done so that it will never run, but normal deploy will-->
-                        <!--this plugin is inherited from jackson-base parent pom-->
-                        <phase>does-not-exist</phase>
-                    </execution>
-                </executions>
+                <configuration>
+                    <serverId>usbr-component</serverId>
+                    <nexusUrl>${MAVEN_URL_RELEASES}</nexusUrl>
+<!--                    <stagingProfileId>b34f19b9cc6224</stagingProfileId>-->
+                </configuration>
             </plugin>
         </plugins>
     </build>
