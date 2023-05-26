@@ -139,9 +139,14 @@
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.6.6</version>
                 <extensions>true</extensions>
-                <configuration>
-                    <skipNexusStagingDeployMojo >true</skipNexusStagingDeployMojo >
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>does-not-exist</id>
+                        <!--this is done so that it will never run, but normal deploy will-->
+                        <!--this plugin is inherited from jackson-base parent pom-->
+                        <phase>does-not-exist</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
