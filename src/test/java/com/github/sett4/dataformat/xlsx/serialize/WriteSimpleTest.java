@@ -7,7 +7,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.github.sett4.dataformat.xlsx.ModuleTestBase;
 import com.github.sett4.dataformat.xlsx.XlsxGenerator;
 import com.github.sett4.dataformat.xlsx.XlsxMapper;
-import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -104,9 +104,9 @@ public class WriteSimpleTest extends ModuleTestBase {
         int activeSheetIndex = workbook.getActiveSheetIndex();
         Sheet sheet = workbook.getSheetAt(activeSheetIndex);
         assertEquals(123.0, sheet.getRow(1).getCell(5).getNumericCellValue());
-        assertEquals(CellType.NUMERIC, sheet.getRow(1).getCell(5).getCellType());
+        assertEquals(Cell.CELL_TYPE_NUMERIC, sheet.getRow(1).getCell(5).getCellType());
         assertEquals("1234567890123456789012345678901234567890", sheet.getRow(1).getCell(6).getStringCellValue());
-        assertEquals(CellType.STRING, sheet.getRow(1).getCell(6).getCellType());
+        assertEquals(Cell.CELL_TYPE_STRING, sheet.getRow(1).getCell(6).getCellType());
 
         file.delete();
     }
@@ -138,11 +138,11 @@ public class WriteSimpleTest extends ModuleTestBase {
         Workbook workbook = new XSSFWorkbook(new FileInputStream(file));
         int activeSheetIndex = workbook.getActiveSheetIndex();
         Sheet sheet = workbook.getSheetAt(activeSheetIndex);
-        assertEquals(CellType.STRING, sheet.getRow(0).getCell(0).getCellType());
+        assertEquals(Cell.CELL_TYPE_STRING, sheet.getRow(0).getCell(0).getCellType());
         assertEquals("Silu", sheet.getRow(0).getCell(0).getStringCellValue());
-        assertEquals(CellType.NUMERIC, sheet.getRow(0).getCell(4).getCellType());
+        assertEquals(Cell.CELL_TYPE_NUMERIC, sheet.getRow(0).getCell(4).getCellType());
         assertEquals(123.0, sheet.getRow(0).getCell(4).getNumericCellValue());
-        assertEquals(CellType.NUMERIC, sheet.getRow(0).getCell(6).getCellType());
+        assertEquals(Cell.CELL_TYPE_NUMERIC, sheet.getRow(0).getCell(6).getCellType());
         assertEquals(new BigDecimal("1234567890123456789012345678901234567890").doubleValue(), sheet.getRow(0).getCell(6).getNumericCellValue());
     	
         file.delete();
