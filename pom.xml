@@ -140,14 +140,8 @@
                 <version>1.6.6</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+                    <skipLocalStaging>true</skipLocalStaging>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>none</phase>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
